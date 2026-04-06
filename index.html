@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar">
+        <nav class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="section hero">
+            <div class="container hero-grid">
+                <div class="hero-text-content">
+                    <h1 class="title">Srinath Mahto</h1>
+                    <p class="subtitle">Azure Data Engineer</p>
+                    <div class="hero-tech-badges">
+                        <span class="badge">Azure Data Factory</span>
+                        <span class="badge">Databricks</span>
+                        <span class="badge">PySpark</span>
+                        <span class="badge">Ab Initio</span>
+                        <span class="badge">ADLS</span>
+                        <span class="badge">Linux</span>
+                    </div>
+                    <p class="description">I design resilient, scalable data architectures. By leveraging
+                        high-performance processing frameworks, I transform massive complex datasets into reliable
+                        intelligence for mission-critical business systems.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="Resume_Srinath_Mahto.pdf" download class="btn btn-secondary">Download Resume</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-card">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="code-title">etl_pipeline.py</span>
+                        </div>
+                        <pre class="code-content"><code><span class="keyword">def</span> <span class="function">process_telemetry_data</span>():
+    <span class="comment"># Extract from On-Prem Source</span>
+    raw_df = spark.read.format(<span class="string">"jdbc"</span>) \
+        .option(<span class="string">"url"</span>, jdbc_url) \
+        .load()
+    
+    <span class="comment"># Apply Transformations & Cleansing</span>
+    clean_df = raw_df.filter(col(<span class="string">"status"</span>) == <span class="string">"Active"</span>) \
+        .withColumn(<span class="string">"processed_at"</span>, current_timestamp())
+    
+    <span class="comment"># Load to ADLS (Delta format)</span>
+    clean_df.write.format(<span class="string">"delta"</span>) \
+        .mode(<span class="string">"append"</span>) \
+        .saveAsTable(<span class="string">"trusted_zone.telemetry"</span>)
+        
+    <span class="keyword">return</span> <span class="string">"ETL Job Completed"</span></code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-bg-glow"></div>
+        </section>
+
+        <!-- Horizontal Pipeline Divider -->
+        <div class="pipeline-divider-container container">
+            <svg viewBox="0 0 1100 80" width="100%" height="80" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="hero-div-glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+
+                <!-- Base Tracks -->
+                <!-- Top path branch -->
+                <path class="div-track"
+                    d="M 0 40 L 450 40 C 475 40, 475 15, 500 15 L 600 15 C 625 15, 625 40, 650 40 L 1100 40" fill="none"
+                    stroke="rgba(59, 130, 246, 0.25)" stroke-width="1.5" />
+
+                <!-- Bottom path branch -->
+                <path class="div-track" d="M 450 40 C 475 40, 475 65, 500 65 L 600 65 C 625 65, 625 40, 650 40"
+                    fill="none" stroke="rgba(59, 130, 246, 0.25)" stroke-width="1.5" />
+
+                <!-- Pulse Animations -->
+                <path class="div-pulse"
+                    d="M 0 40 L 450 40 C 475 40, 475 15, 500 15 L 600 15 C 625 15, 625 40, 650 40 L 1100 40" fill="none"
+                    stroke="rgba(6, 182, 212, 0.8)" stroke-linecap="round" stroke-width="2" style="filter: url(#hero-div-glow);" />
+                <path class="div-pulse-alt"
+                    d="M 0 40 L 450 40 C 475 40, 475 65, 500 65 L 600 65 C 625 65, 625 40, 650 40 L 1100 40" fill="none"
+                    stroke="rgba(6, 182, 212, 0.6)" stroke-linecap="round" stroke-width="2" style="filter: url(#hero-div-glow);" />
+
+                <!-- Data Nodes -->
+                <circle cx="150" cy="40" r="3" class="div-node" style="filter: url(#hero-div-glow);" />
+                <circle cx="320" cy="40" r="4.5" class="div-node" style="filter: url(#hero-div-glow);" />
+
+                <!-- Split Point -->
+                <circle cx="450" cy="40" r="5" class="div-node" style="filter: url(#hero-div-glow);" />
+
+                <circle cx="500" cy="15" r="3" class="div-node" style="filter: url(#hero-div-glow);" />
+                <circle cx="550" cy="15" r="3" class="div-node" style="filter: url(#hero-div-glow);" />
+                <circle cx="600" cy="15" r="3" class="div-node" style="filter: url(#hero-div-glow);" />
+
+                <circle cx="500" cy="65" r="3" class="div-node" style="filter: url(#hero-div-glow);" />
+                <circle cx="600" cy="65" r="3" class="div-node" style="filter: url(#hero-div-glow);" />
+
+                <!-- Merge Point -->
+                <circle cx="650" cy="40" r="5" class="div-node" style="filter: url(#hero-div-glow);" />
+
+                <circle cx="800" cy="40" r="4.5" class="div-node" style="filter: url(#hero-div-glow);" />
+                <circle cx="950" cy="40" r="3" class="div-node" style="filter: url(#hero-div-glow);" />
+            </svg>
+        </div>
+
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-grid">
+                    <img src="profile.png" alt="Srinath Mahto" class="about-image">
+                    <div class="about-text">
+                        <p>I am an Azure Data Engineer with over 3.5 years of experience architecting and supporting
+                            enterprise-grade data platforms. Specializing in Azure Data Factory, Databricks, Ab Initio,
+                            and SQL, I build fully automated, metadata-driven pipelines that elegantly handle massive
+                            scale and complexity.</p>
+                        <p>Beyond simply moving data, my work tightly focuses on systemic reliability and data
+                            integrity. I proactively triage operational bottlenecks to maintain 99.9% pipeline uptime,
+                            directly fueling critical reporting requirements for the healthcare, telecom, and financial
+                            sectors.</p>
+                        <ul class="about-stats">
+                            <li><strong>3.5+</strong> <span>Years Experience</span></li>
+                            <li><strong>3</strong> <span>Core Domains</span></li>
+                            <li><strong>99.9%</strong> <span>Data Reliability Uptime</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horizontal Pipeline Divider -->
+        <div class="pipeline-divider-container container">
+            <svg viewBox="0 0 1100 80" width="100%" height="80" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="div-glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+
+                <!-- Base Tracks -->
+                <!-- Top path branch -->
+                <path class="div-track"
+                    d="M 0 40 L 450 40 C 475 40, 475 15, 500 15 L 600 15 C 625 15, 625 40, 650 40 L 1100 40" fill="none"
+                    stroke="rgba(59, 130, 246, 0.25)" stroke-width="1.5" />
+
+                <!-- Bottom path branch -->
+                <path class="div-track" d="M 450 40 C 475 40, 475 65, 500 65 L 600 65 C 625 65, 625 40, 650 40"
+                    fill="none" stroke="rgba(59, 130, 246, 0.25)" stroke-width="1.5" />
+
+                <!-- Pulse Animations -->
+                <path class="div-pulse"
+                    d="M 0 40 L 450 40 C 475 40, 475 15, 500 15 L 600 15 C 625 15, 625 40, 650 40 L 1100 40" fill="none"
+                    stroke="rgba(6, 182, 212, 0.8)" stroke-linecap="round" stroke-width="2" />
+                <path class="div-pulse-alt"
+                    d="M 0 40 L 450 40 C 475 40, 475 65, 500 65 L 600 65 C 625 65, 625 40, 650 40 L 1100 40" fill="none"
+                    stroke="rgba(6, 182, 212, 0.6)" stroke-linecap="round" stroke-width="2" />
+
+                <!-- Data Nodes -->
+                <circle cx="150" cy="40" r="3" class="div-node" />
+                <circle cx="320" cy="40" r="4.5" class="div-node" />
+
+                <!-- Split Point -->
+                <circle cx="450" cy="40" r="5" class="div-node" />
+
+                <circle cx="500" cy="15" r="3" class="div-node" />
+                <circle cx="550" cy="15" r="3" class="div-node" />
+                <circle cx="600" cy="15" r="3" class="div-node" />
+
+                <circle cx="500" cy="65" r="3" class="div-node" />
+                <circle cx="600" cy="65" r="3" class="div-node" />
+
+                <!-- Merge Point -->
+                <circle cx="650" cy="40" r="5" class="div-node" />
+
+                <circle cx="800" cy="40" r="4.5" class="div-node" />
+                <circle cx="950" cy="40" r="3" class="div-node" />
+            </svg>
+        </div>
+
+        <section id="skills" class="section skills">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-categories">
+                    <div class="skill-category">
+                        <h3>ETL & Data Orchestration</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Azure Data Factory</span>
+                            <span class="tag">ADLS</span>
+                            <span class="tag">Azure SQL</span>
+                            <span class="tag">Azure Monitor</span>
+                            <span class="tag">Ab Initio</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Data Processing</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Databricks</span>
+                            <span class="tag">PySpark</span>
+                            <span class="tag">Microsoft Fabric</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Databases & Storage</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Azure SQL Database</span>
+                            <span class="tag">Azure Blob Storage</span>
+                            <span class="tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Cloud & DevOps</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Microsoft Azure</span>
+                            <span class="tag">Oracle Cloud Infrastructure</span>
+                            <span class="tag">Git</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Monitoring & Logging</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Azure Monitor Log Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="proj1.png" alt="Data Migration Pipeline" class="project-image">
+                        <div class="project-info">
+                            <h3>On-Prem SQL Server to ADLS</h3>
+                            <p>Built end-to-end data pipelines using Azure Data Factory and engineered robust data transformations using PySpark in Azure Databricks. Implemented metadata-driven execution, incremental loads with watermark logic, and dynamic SQL queries.</p>
+                            <div class="project-tech">
+                                <span>Azure Data Factory</span><span>SQL Server</span><span>ADLS</span><span>Databricks</span><span>PySpark</span>
+                            </div>
+                            <div class="project-links" style="margin-top: 15px;">
+                                <a href="#" class="btn btn-secondary w-full"
+                                    style="text-align: center; padding: 10px;">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="proj2.png" alt="Data Quality Checks" class="project-image">
+                        <div class="project-info">
+                            <h3>SQL Validation for ETL</h3>
+                            <p>Engineered comprehensive data quality checks and specialized validation queries to
+                                proactively monitor and ensure data integrity across production ETL pipelines.</p>
+                            <div class="project-tech">
+                                <span>Advanced SQL</span><span>Quality Assurance</span><span>ETL</span>
+                            </div>
+                            <div class="project-links" style="margin-top: 15px;">
+                                <a href="#" class="btn btn-secondary w-full"
+                                    style="text-align: center; padding: 10px;">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="proj3.png" alt="Pipeline Operations" class="project-image">
+                        <div class="project-info">
+                            <h3>ETL Monitoring & Support</h3>
+                            <p>Spearheaded monitoring initiatives for large-scale ETL jobs using Ab Initio Control Center and Azure Monitor. Actively debugged production failures, resolved operational bottlenecks, and expertly handled critical issues to significantly improve reliability workflows.</p>
+                            <div class="project-tech">
+                                <span>Azure Monitor</span><span>Ab Initio</span><span>Debugging</span><span>Ops</span>
+                            </div>
+                            <div class="project-links" style="margin-top: 15px;">
+                                <a href="#" class="btn btn-secondary w-full"
+                                    style="text-align: center; padding: 10px;">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section experience">
+            <div class="container">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Oct 2025 &ndash; Present</span>
+                            <h3>CS Technical Specialist II</h3>
+                            <h4>Regnology (formerly Wolters Kluwer FRR)</h4>
+                            <ul>
+                                <li><strong>Pipeline Reliability:</strong> Monitored and maintained 20+ Azure Data
+                                    Factory pipelines supporting mission-critical financial regulatory datasets.</li>
+                                <li><strong>Performance Optimization:</strong> Analyzed logs via Azure Monitor and Log
+                                    Analytics to resolve bottlenecks, significantly reducing data delays.</li>
+                                <li><strong>Data Validation:</strong> Engineered complex SQL queries to proactively
+                                    validate data accuracy for critical downstream regulatory reporting.</li>
+                                <li><strong>Incident Resolution:</strong> Actively collaborated with engineering teams
+                                    to diagnose production failures and drive rapid remediation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Jun 2024 &ndash; Aug 2024</span>
+                            <h3>Associate Consultant &ndash; Data Engineer</h3>
+                            <h4>Hoonartek</h4>
+                            <ul>
+                                <li><strong>Enterprise ETL Architecture:</strong> Developed and enhanced large-scale
+                                    data orchestration pipelines utilizing Ab Initio, Azure Data Factory, and Hadoop.
+                                </li>
+                                <li><strong>Distributed Processing:</strong> Executed complex data transformations and
+                                    distributed processing workloads using Ab Initio and orchestrated via Control
+                                    Center on Oracle Exadata.</li>
+                                <li><strong>Data Quality Assurance:</strong> Authored robust SQL verification queries to
+                                    guarantee data transformation integrity and movement consistency across integrated
+                                    systems.</li>
+                                <li><strong>Operational Reliability:</strong> Investigated scheduled batch run failures,
+                                    identified recurring failure patterns, and deployed proactive reporting to
+                                    significantly elevate workflow stability.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">May 2023 &ndash; May 2024</span>
+                            <h3>Data Operations Support (Freelance)</h3>
+                            <h4>Remote</h4>
+                            <ul>
+                                <li><strong>Pipeline Engineering:</strong> Built and maintained SQL-based reporting
+                                    pipelines designed specifically to feed operational dashboards.</li>
+                                <li><strong>Query Optimization:</strong> Developed and optimized advanced SQL queries to
+                                    generate automated, high-fidelity business reports.</li>
+                                <li><strong>Process Automation:</strong> Successfully automated recurring reporting
+                                    processes, actively reducing manual operational effort by 40&ndash;50%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Sep 2022 &ndash; May 2023</span>
+                            <h3>TM &ndash; Azure Data Engineer</h3>
+                            <h4>Redcliffe Lifetech</h4>
+                            <ul>
+                                <li><strong>Healthcare Orchestration:</strong> Engineered end-to-end Azure Data Factory
+                                    pipelines to manage complex healthcare data ingestion and guarantee timely
+                                    processing.</li>
+                                <li><strong>Distributed Transformation:</strong> Leveraged PySpark and Databricks to
+                                    drive large-scale data transformation and optimize Azure storage management.</li>
+                                <li><strong>Reporting Automation:</strong> Developed automated internal business
+                                    reporting workflows utilizing advanced SQL and custom scripting.</li>
+                                <li><strong>Quality Assurance:</strong> Actively diagnosed pipeline failures and
+                                    reinforced data validation checks to ensure zero-defect consistency across systems.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Jun 2021 &ndash; Aug 2022</span>
+                            <h3>TM &ndash; Azure Data Engineer</h3>
+                            <h4>Dr Lal PathLabs</h4>
+                            <ul>
+                                <li><strong>Metadata-Driven Pipelines:</strong> Architected heavily-parameterized ADF
+                                    workflows to automate dynamic on-prem to ADLS data ingestion.</li>
+                                <li><strong>Incremental Execution:</strong> Engineered dynamic SQL solutions to handle
+                                    robust full-snapshot and watermark-based incremental ETL loops.</li>
+                                <li><strong>Distributed Transformation:</strong> Built large-scale PySpark analytical
+                                    workloads on Databricks and enforced rigorous SQL-based data validation.</li>
+                                <li><strong>Runtime Debugging:</strong> Spearheaded failure resolution, explicitly
+                                    debugging Self-hosted Integration Runtime barriers and Java dependency anomalies.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h2 class="section-title">Get in Touch</h2>
+                        <p>I am always open to discussing complex data engineering challenges and exciting new cloud
+                            architectures.</p>
+                        <div class="contact-methods">
+                            <a href="mailto:srinath.mahto@gmail.com"
+                                class="method"><strong>Email:</strong>&nbsp;&nbsp;srinath.mahto@gmail.com</a>
+                            <a href="https://www.linkedin.com/in/srinathmahto/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="method"><strong>LinkedIn:</strong>&nbsp;&nbsp;linkedin.com/in/srinathmahto</a>
+                            <a href="https://github.com/srinathmahto" target="_blank" rel="noopener noreferrer"
+                                class="method"><strong>GitHub:</strong>&nbsp;&nbsp;github.com/srinathmahto</a>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="user_name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="user_email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Let's build something..." required></textarea>
+                        </div>
+                        <div class="form-actions" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <button type="submit" class="btn btn-primary" style="flex: 1 1 200px;">Send Message</button>
+                            <a href="mailto:srinath.mahto@gmail.com?subject=Opportunity&body=Hi Srinath," class="btn btn-secondary" style="flex: 1 1 200px; text-align: center;">Email Me Directly</a>
+                        </div>
+                        <div id="form-status" style="margin-top: 15px; font-weight: 600; text-align: center;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Srinath Mahto. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
